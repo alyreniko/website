@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ALYRENIKO - Haydarov Diyor</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    </head>
+    <body>
+        <header class="navbar">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About me</a>
+            <a href="#contact">Contact</a>
+            <a href=""><i class="fa-solid fa-moon"></i></a>
+            <!-- реализовать переключение темы -->
+        </header>
+        <main>
+            <h1 class="identity">
+                <span class="identity__name">HAYDAROV DIYOR</span>
+                <span class="identity__alias">ALYRENIKO</span>
+            </h1>
+        </main>
+        <section id="design" class="design-portfolio projects"></section>
+        <section id="code" class="code-portfolio projects"></section>
+
+        <script>
+        const projects = [
+          {
+            type: "code", title: "Pong",
+            description: "A simple Pong implementation in Pygame: two players control paddles and bounce a ball around to keep it out of their own goal.",
+            tags: ["Python", "pygame", "hci_nsu"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/pong-pygame" }]
+          },
+          {
+            type: "code", title: "Photo2ascii",
+            description: "A Python tool that converts images into ASCII art using custom character patterns, resizes them, and saves the result as a PNG.",
+            tags: ["Python", "Pillow"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/photo2ascii-dithering" }]
+          },
+          {
+            type: "code", title: "LanClip",
+            description: "A C project using the libsodium library for secure clipboard content sharing between devices in the same local network.",
+            tags: ["C", "libsodium"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/lanclip" }]
+          },
+          {
+            type: "code", title: "Spyfall",
+            description: "A Telegram bot implementation of the social deduction game Spyfall: players receive secret locations, while one player is the spy who must guess the location before being discovered through questioning and voting.",
+            tags: ["Python", "Telegram_bot", "telebot"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/spyfall-telegram-bot" }]
+          },
+          {
+            type: "code", title: "Wi-Fi Key Reciever",
+            description: "A Windows batch script that extracts and saves saved Wi-Fi passwords to a text file.",
+            tags: ["bat", "wifi"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/wfpe" }]
+          }
+        ];
+
+        function renderProjects(type, containerId) {
+          const container = document.getElementById(containerId);
+          container.innerHTML = projects
+            .filter(p => p.type === type)
+            .map(p => `
+              <div class="card">
+                ${p.image ? `<img class="card__image" src="${p.image}" alt="${p.title}"/>` : ""}
+                <h3 class="card__title">${p.title}</h3>
+                <p class="card__description">${p.description}</p>
+                ${p.tags ? `<div class="card__tags">${p.tags.map(t => `<p>${t}</p>`).join("")}</div>` : ""}
+                <div class="card__links">
+                  ${p.links.map(l => `<a target="_blank" href="${l.url}">${l.text} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`).join("")}
+                </div>
+              </div>
+            `).join("");
+        }
+
+        renderProjects("design", "design");
+        renderProjects("code", "code");
+        </script>
+    </body>
+</html>
