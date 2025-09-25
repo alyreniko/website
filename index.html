@@ -22,160 +22,62 @@
                 <span class="identity__alias">ALYRENIKO</span>
             </h1>
         </main>
-        <section class="design-portfolio projects">
-            <div class="card">
-                <img class="card__image" src="https://dummyimage.com/1280x720/222/aaa" alt="card__image" width="100%"/>
-                <h3 class="card__title">Design</h3>
-                <p class="card__description"> Lorem ipsum dolor sit amet, quis in labore minim elit veniam ut excepteur laborum dolor nostrud id sit laborum lorem deserunt nulla nostrud labore ad</p>
+        <section id="design" class="design-portfolio projects"></section>
+        <section id="code" class="code-portfolio projects"></section>
+
+        <script>
+        const projects = [
+          {
+            type: "code", title: "Pong",
+            description: "A simple Pong implementation in Pygame: two players control paddles and bounce a ball around to keep it out of their own goal.",
+            tags: ["Python", "pygame", "hci_nsu"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/pong-pygame" }]
+          },
+          {
+            type: "code", title: "Photo2ascii",
+            description: "A Python tool that converts images into ASCII art using custom character patterns, resizes them, and saves the result as a PNG.",
+            tags: ["Python", "Pillow"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/photo2ascii-dithering" }]
+          },
+          {
+            type: "code", title: "LanClip",
+            description: "A C project using the libsodium library for secure clipboard content sharing between devices in the same local network.",
+            tags: ["C", "libsodium"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/lanclip" }]
+          },
+          {
+            type: "code", title: "Spyfall",
+            description: "A Telegram bot implementation of the social deduction game Spyfall: players receive secret locations, while one player is the spy who must guess the location before being discovered through questioning and voting.",
+            tags: ["Python", "Telegram_bot", "telebot"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/spyfall-telegram-bot" }]
+          },
+          {
+            type: "code", title: "Wi-Fi Key Reciever",
+            description: "A Windows batch script that extracts and saves saved Wi-Fi passwords to a text file.",
+            tags: ["bat", "wifi"],
+            links: [{ text: "GitHub", url: "https://github.com/alyreniko/wfpe" }]
+          }
+        ];
+
+        function renderProjects(type, containerId) {
+          const container = document.getElementById(containerId);
+          container.innerHTML = projects
+            .filter(p => p.type === type)
+            .map(p => `
+              <div class="card">
+                ${p.image ? `<img class="card__image" src="${p.image}" alt="${p.title}"/>` : ""}
+                <h3 class="card__title">${p.title}</h3>
+                <p class="card__description">${p.description}</p>
+                ${p.tags ? `<div class="card__tags">${p.tags.map(t => `<p>${t}</p>`).join("")}</div>` : ""}
                 <div class="card__links">
-                    <a href="">Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <a href="">Dribbble <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  ${p.links.map(l => `<a target="_blank" href="${l.url}">${l.text} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`).join("")}
                 </div>
-            </div>
-            <div class="card">
-                <img
-                    class="card__image"
-                    src="https://dummyimage.com/1280x720/222/aaa"
-                    alt="card__image"
-                    width="100%"
-                />
-                <h3 class="card__title">Design</h3>
-                <p class="card__description">
-                    Lorem ipsum dolor sit amet, quis in labore minim elit veniam
-                    ut excepteur laborum dolor nostrud id sit laborum lorem
-                    deserunt nulla nostrud labore ad
-                </p>
-                <div class="card__links">
-                    <a href=""
-                        >Behance
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i
-                    ></a>
-                    <a href=""
-                        >Dribbble
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i
-                    ></a>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                    class="card__image"
-                    src="https://dummyimage.com/1280x720/222/aaa"
-                    alt="card__image"
-                    width="100%"
-                />
-                <h3 class="card__title">Design</h3>
-                <p class="card__description">
-                    Lorem ipsum dolor sit amet, quis in labore minim elit veniam
-                    ut excepteur laborum dolor nostrud id sit laborum lorem
-                    deserunt nulla nostrud labore ad
-                </p>
-                <div class="card__links">
-                    <a href=""
-                        >Behance
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i
-                    ></a>
-                    <a href=""
-                        >Dribbble
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i
-                    ></a>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                    class="card__image"
-                    src="https://dummyimage.com/1280x720/222/aaa"
-                    alt="card__image"
-                    width="100%"
-                />
-                <h3 class="card__title">Design</h3>
-                <p class="card__description">
-                    Lorem ipsum dolor sit amet, quis in labore minim elit veniam
-                    ut excepteur laborum dolor nostrud id sit laborum lorem
-                    deserunt nulla nostrud labore ad
-                </p>
-                <div class="card__links">
-                    <a href=""
-                        >Behance
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i
-                    ></a>
-                    <a href=""
-                        >Dribbble
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i
-                    ></a>
-                </div>
-            </div>
-        </section>
-        <section class="code-portfolio projects">
-            <div class="card">
-                <h3 class="card__title">Code</h3>
-                <p class="card__description"> Lorem ipsum dolor sit amet, quis in labore minim elit veniam ut excepteur laborum dolor nostrud id sit laborum lorem deserunt nulla nostrud labore ad</p>
-                <div class="card__tags">
-                    <p>UX/UX</p>
-                    <p>Figma</p>
-                    <p>HTML5</p>
-                    <p>CSS3</p>
-                </div>
-                <div class="card__links">
-                    <a href="">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <a href="">GitLab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <h3 class="card__title">Code</h3>
-                <p class="card__description"> Lorem ipsum dolor sit amet, quis in labore minim elit veniam ut excepteur laborum dolor nostrud id sit laborum lorem deserunt nulla nostrud labore ad</p>
-                <div class="card__tags">
-                    <p>UX/UX</p>
-                    <p>Figma</p>
-                    <p>HTML5</p>
-                    <p>CSS3</p>
-                </div>
-                <div class="card__links">
-                    <a href="">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <a href="">GitLab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <h3 class="card__title">Code</h3>
-                <p class="card__description"> Lorem ipsum dolor sit amet, quis in labore minim elit veniam ut excepteur laborum dolor nostrud id sit laborum lorem deserunt nulla nostrud labore ad</p>
-                <div class="card__tags">
-                    <p>UX/UX</p>
-                    <p>Figma</p>
-                    <p>HTML5</p>
-                    <p>CSS3</p>
-                </div>
-                <div class="card__links">
-                    <a href="">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <a href="">GitLab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <h3 class="card__title">Code</h3>
-                <p class="card__description"> Lorem ipsum dolor sit amet, quis in labore minim elit veniam ut excepteur laborum dolor nostrud id sit laborum lorem deserunt nulla nostrud labore ad</p>
-                <div class="card__tags">
-                    <p>UX/UX</p>
-                    <p>Figma</p>
-                    <p>HTML5</p>
-                    <p>CSS3</p>
-                </div>
-                <div class="card__links">
-                    <a href="">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <a href="">GitLab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <h3 class="card__title">Code</h3>
-                <p class="card__description"> Lorem ipsum dolor sit amet, quis in labore minim elit veniam ut excepteur laborum dolor nostrud id sit laborum lorem deserunt nulla nostrud labore ad</p>
-                <div class="card__tags">
-                    <p>Python</p>
-                    <p>pygame</p>
-                    <p>HTML5</p>
-                    <p>CSS3</p>
-                </div>
-                <div class="card__links">
-                    <a href="">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <a href="">GitLab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-        </section>
+              </div>
+            `).join("");
+        }
+
+        renderProjects("design", "design");
+        renderProjects("code", "code");
+        </script>
     </body>
 </html>
